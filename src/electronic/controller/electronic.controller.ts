@@ -17,4 +17,10 @@ export class ElectronicController {
 findById(@Param('id', ParseIntPipe) id: number): Promise<Electronic> {
     return this.electronicService.findById(id);
 }
+
+@Get('/model/:model')
+@HttpCode(HttpStatus.OK)
+findAllByModel(@Param('model') model: string): Promise<Electronic[]> {
+    return this.electronicService.findAllByModel(model);
+}
 }
