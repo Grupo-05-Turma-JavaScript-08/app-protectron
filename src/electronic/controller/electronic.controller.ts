@@ -1,4 +1,4 @@
-import { Controller, Get, HttpCode, HttpStatus } from "@nestjs/common";
+import { Controller, Get, HttpCode, HttpStatus, Param, ParseIntPipe } from "@nestjs/common";
 import { ElectronicService } from "../services/electronic.service";
 import { Electronic } from "../entites/electronic.entity";
 
@@ -10,5 +10,11 @@ export class ElectronicController {
   @HttpCode(HttpStatus.OK)
    findAll(): Promise<Electronic[]> {
     return this.electronicService.findAll();
+}
+
+@Get('/:id')
+@HttpCode(HttpStatus.OK)
+findById(@Param('id', ParseIntPipe) id: number): Promise<Electronic> {
+    return this.electronicService.findById(id);
 }
 }

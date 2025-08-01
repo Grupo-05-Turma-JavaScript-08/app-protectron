@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { HttpException, HttpStatus, Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Electronic } from "../entites/electronic.entity";
 import { Repository } from "typeorm";
@@ -12,4 +12,13 @@ export class ElectronicService {
     async findAll(): Promise<Electronic[]> {
         return await this.electronicRepository.find();
     }
+
+    async findById(id: number ): Promise<Electronic> {
+        const electronic = await this.electronicRepository.findOne({ 
+            where: { id }
+         });
+        if (!electronic) 
+            throw new HttpException('Eletronico não encontrado', HttpStatus.NOT_FOUND);
+            return electronic;
+}
 }
