@@ -10,7 +10,11 @@ export class Insurance {
 
     @IsNotEmpty()
     @Column({ length: 255, nullable: false })
-    descricao: string
+    description: string
+
+    @IsNotEmpty()
+    @Column({ length: 100, nullable: false })
+    title: string
 
     @IsNotEmpty()
     @Column(
