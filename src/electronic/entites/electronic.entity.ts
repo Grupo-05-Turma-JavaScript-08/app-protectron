@@ -1,5 +1,6 @@
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Insurance } from "../../insurance/entities/insurance.entity";
 
 @Entity({
     name: "tb_electronic"
@@ -42,5 +43,11 @@ export class Electronic {
     @IsNotEmpty()
     @UpdateDateColumn()
     purchaseDate: Date;
+
+    @ManyToOne(() => Insurance, (insurance) => insurance.electronic, {
+        onDelete: "CASCADE"
+    })
+    @JoinColumn({ name: 'insurance_id' })
+    insurance: Insurance;
 }
 

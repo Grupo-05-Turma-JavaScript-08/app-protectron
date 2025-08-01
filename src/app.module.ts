@@ -3,6 +3,8 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ElectronicModule } from './electronic/electronic.module';
 import { Electronic } from './electronic/entites/electronic.entity';
+import { Insurance } from './insurance/entities/insurance.entity';
+import { InsuranceModule } from './insurance/insurance.module';
 
 @Module({
   imports: [
@@ -16,11 +18,11 @@ import { Electronic } from './electronic/entites/electronic.entity';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [Electronic],
+      entities: [Electronic, Insurance],
       synchronize: process.env.NODE_ENV === 'development',
       logging: process.env.NODE_ENV === 'development',
     }),
-    ElectronicModule, 
+    ElectronicModule, InsuranceModule
   ],
 })
 export class AppModule {}
