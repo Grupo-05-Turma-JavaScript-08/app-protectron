@@ -35,7 +35,7 @@ export class Electronic {
 
     @IsNotEmpty()
     @Column(
-        "decimal", { precision: 10, scale: 10, nullable: false}
+        "decimal", { precision: 10, scale: 2, nullable: false}
     )
     insuredValue : number;
 
