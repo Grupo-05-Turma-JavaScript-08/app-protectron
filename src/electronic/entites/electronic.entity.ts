@@ -36,9 +36,17 @@ export class Electronic {
 
     @IsNotEmpty()
     @Column(
-        "decimal", { precision: 10, scale: 2, nullable: false}
+        "decimal", { precision: 10, scale: 2, nullable: false }
     )
-    insuredValue : number;
+    insuredValue: number;
+
+    @Column(
+        "decimal", { precision: 10, scale: 2, nullable: false }
+    )
+    premiumValue: number;
+
+    @Column({ length: 50, nullable: false })
+    insuranceStatus: string;
 
     @IsNotEmpty()
     @UpdateDateColumn()

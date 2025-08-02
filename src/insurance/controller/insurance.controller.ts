@@ -43,4 +43,6 @@ export class InsuranceController {
     delete(@Param('id', ParseIntPipe) id: number) {
         return this.insuranceService.delete(id);
     }
+
+    
 }

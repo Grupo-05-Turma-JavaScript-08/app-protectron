@@ -18,9 +18,9 @@ export class Insurance {
 
     @IsNotEmpty()
     @Column(
-        "decimal", { precision: 10, scale: 2, nullable: false }
+        "decimal", { precision: 10, scale: 1, nullable: false }
     )
-    premiumAmount: number;
+    premiumPorcent: number;
 
     @IsNotEmpty()
     @UpdateDateColumn()
@@ -30,10 +30,6 @@ export class Insurance {
     @UpdateDateColumn()
     expirationDate: Date;
     
-    @IsNotEmpty()
-    @Column({ length: 50, nullable: false })
-    insuranceStatus: string;
-
     @OneToMany(() => Electronic, (electronic) => electronic.insurance)
     electronic: Electronic[];
 }
