@@ -78,24 +78,24 @@ export class ElectronicService {
 //recebe o eletronico e o seguro
 //tratamento de seguro de 3 anos caso o eletronico tenha mais de 3 anos gera depreciacao
 //e o campo insuranceStatus recebe Depreciado
-    private calculatePremiumValue(electronic: Electronic, insurance: Insurance) {
-        let today = new Date();
-        const purchaseDate = new Date(electronic.purchaseDate);
-        const year = today.getFullYear() - purchaseDate.getFullYear();
+    private calculatePremiumValue(electronic: Electronic, insurance: Insurance): number {
+    const today = new Date();
+    const purchaseDate = new Date(electronic.purchaseDate);
 
-        let insuranceValue = electronic.insuredValue;
-        if (year >= 3) {
-            insuranceValue *= 0.7 
-           electronic.insuranceStatus = 'Depreciado';
-        } else {
-            electronic.insuranceStatus = 'Ativo';
-        }   
+    const totalMonths = (today.getFullYear() - purchaseDate.getFullYear()) * 12 + (today.getMonth() - purchaseDate.getMonth());
 
-        let porcentVaule = insurance.premiumPorcent;
+    let insuranceValue = electronic.insuredValue;
 
-        const premiumValue = (insuranceValue * porcentVaule) / 100
-
-        return premiumValue
+    if (totalMonths > 36) {
+        insuranceValue *= 0.7;
+        electronic.insuranceStatus = 'Depreciado';
+    } else {
+        electronic.insuranceStatus = 'Normal';
     }
 
+    const percentValue = insurance.premiumPorcent;
+    const premiumValue = (insuranceValue * percentValue) / 100;
+
+    return premiumValue;
+}
 }
