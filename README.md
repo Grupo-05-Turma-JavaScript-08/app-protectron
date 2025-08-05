@@ -48,4 +48,11 @@ Sistema desenvolvido com NestJS para gerenciar seguros de equipamentos eletrôni
 
 - Cálculo automático do prêmio e status do seguro com base na data
 
-## 👥 Equipe
+## 👥 Equipe 
+- Ewertton Gonçalves (PO)
+- Felipe Alves (Tester)
+- Gabriel Martins (Dev)
+- Larissa Ruiz (Dev)
+- Matheus Pereira (Dev)
+- Micheli Martins (Dev)
+- Viviane Santos (Dev)
